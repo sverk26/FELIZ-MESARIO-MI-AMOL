@@ -86,12 +86,12 @@ const CONFIG = {
     "ariaInitial": "Capullo de flor cerrado",
     "ariaDone": "Flor abierta con el centro dorado"
   },
-  "closingTitle": "Feliz aniversario,",
+  "closingTitle": "Feliz Mesario Mi Corazón de Melón,",
   "closingText": "Por muchos meses y años más juntos.",
   "footer": "Con amor, de Sverker para {name} ❤️",
   "buttons": {
     "open": "Abrir mi sorpresa",
-    "celebrate": "Celebrar otra vez"
+    "celebrate": "Presionar muchas veces"
   },
   "decor": {
     "shape": "corazones",
@@ -124,7 +124,7 @@ const CONFIG = {
     "#ffe4ec"
   ],
   "music": {
-    "volume": 0.6,
+    "volume": 1,
     "synthFallback": true,
     "src": "audio/cuando-tu-me-besas.mp3",
     "melody": {
@@ -976,7 +976,7 @@ const Experience = {
     this.main = $("#main");
     this.openBtn = $("#openBtn");
     this.openBtn.addEventListener("click", () => this.start());
-    $("#celebrateBtn").addEventListener("click", () => this.celebrate());
+    $("#celebrateBtn").addEventListener("click", (e) => this.celebrate(e.currentTarget));
   },
 
   start() {
@@ -1004,10 +1004,25 @@ const Experience = {
     }, prefersReducedMotion() ? 0 : 1000);
   },
 
-  celebrate() {
+  celebrate(btn) {
     Confetti.rain(3200);
     Confetti.cannons();
     Balloons.burst();
+    if (btn && !prefersReducedMotion()) this.popHeart(btn);
+  },
+
+  /** Un corazoncito sale del botón con cada toque */
+  popHeart(btn) {
+    const r = btn.getBoundingClientRect();
+    const heart = document.createElement("span");
+    heart.className = "heart-pop";
+    heart.textContent = pick(["❤️", "💖", "💕", "💗", "💘"]);
+    heart.setAttribute("aria-hidden", "true");
+    heart.style.left = `${r.left + r.width / 2 + rand(-40, 40)}px`;
+    heart.style.top = `${r.top}px`;
+    heart.style.setProperty("--drift", `${rand(-70, 70).toFixed(0)}px`);
+    document.body.appendChild(heart);
+    heart.addEventListener("animationend", () => heart.remove(), { once: true });
   },
 };
 
