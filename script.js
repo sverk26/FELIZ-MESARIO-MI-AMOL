@@ -82,6 +82,7 @@ const CONFIG = {
     "lead": "Tócala cuando estés lista.",
     "button": "Abrir la flor 🌷",
         "doneMessage": "✨ Como lo que siento por ti, que cada día florece y crece más ✨",
+    "nextButton": "Tengo una pregunta para ti ❤️",
     "ariaInitial": "Capullo de flor cerrado",
     "ariaDone": "Flor abierta con el centro dorado"
   },
@@ -909,6 +910,8 @@ const Centerpiece = {
     this.button.textContent = fill(this.cfg.button);
     this.el.setAttribute("aria-label", fill(this.cfg.ariaInitial));
     this.button.addEventListener("click", () => { if (!this.done) this.complete(); });
+    this.nextBtn = $("#toQuestionBtn");
+    this.nextBtn.addEventListener("click", () => this.toQuestion());
   },
 
   complete() {
@@ -924,6 +927,22 @@ const Centerpiece = {
       this.message.textContent = fill(this.cfg.doneMessage);
       this.message.classList.add("is-visible");
     }, 450);
+    // El botón para seguir aparece cuando ya se leyó el mensaje de la flor
+    setTimeout(() => {
+      this.nextBtn.hidden = false;
+      this.nextBtn.classList.add("is-turning");
+    }, prefersReducedMotion() ? 0 : 2200);
+  },
+
+  toQuestion() {
+    const stage = $("#questionStage");
+    stage.hidden = false;
+    this.nextBtn.hidden = true;
+    requestAnimationFrame(() => {
+      $("#pregunta").scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth", block: "start" });
+      $("#questionTitle").setAttribute("tabindex", "-1");
+      $("#questionTitle").focus({ preventScroll: true });
+    });
   },
 
 };

@@ -31,7 +31,7 @@
       body.is-locked { overflow: auto !important; }
       .reveal, .message__body p { opacity: 1 !important; transform: none !important; }
       .centerpiece-controls { display: none !important; }
-      #continuation[hidden], #finale[hidden], #recuerdos[hidden] { display: block !important; }
+      #continuation[hidden], #questionStage[hidden], #finale[hidden], #recuerdos[hidden] { display: block !important; }
       .message__next, .question__buttons, .message__pager { display: none !important; }
     </style>
   </noscript>
@@ -146,10 +146,12 @@
       <div class="centerpiece-controls">
         <button class="btn btn--primary" id="centerpieceBtn" type="button">Pedir un deseo ✨</button>
         <p class="centerpiece-message" id="centerpieceMessage" role="status" aria-live="polite"></p>
+        <button class="btn btn--primary btn--pulse" id="toQuestionBtn" type="button" hidden data-bind="centerpiece.nextButton">Tengo una pregunta para ti ❤️</button>
       </div>
     </section>
 
-    <!-- Pregunta -->
+    <!-- Pregunta: aparece solo después de abrir la flor y pulsar el botón -->
+    <div id="questionStage" hidden>
     <section class="scene question" id="pregunta" aria-labelledby="questionTitle">
       <h2 class="scene__title question__title reveal" id="questionTitle" data-bind="question.title">¿Deseas continuar con nuestro amor? ❤️</h2>
       <div class="question__buttons reveal" id="questionButtons" style="--d:.2s">
@@ -158,6 +160,8 @@
       </div>
       <p class="question__reply" id="noReply" role="status" aria-live="polite"></p>
     </section>
+
+    </div><!-- /questionStage -->
 
     <!-- Recuerdos: aparece al responder Sí -->
     <section class="scene memories" id="recuerdos" hidden aria-labelledby="memoriesTitle">
