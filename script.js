@@ -91,7 +91,8 @@ const CONFIG = {
   "footer": "Con amor, de Sverker para {name} ❤️",
   "buttons": {
     "open": "Abrir mi sorpresa",
-    "celebrate": "Presionar muchas veces"
+    "celebrate": "Presionar muchas veces",
+    "replay": "Ver otra vez"
   },
   "decor": {
     "shape": "corazones",
@@ -977,6 +978,7 @@ const Experience = {
     this.openBtn = $("#openBtn");
     this.openBtn.addEventListener("click", () => this.start());
     $("#celebrateBtn").addEventListener("click", (e) => this.celebrate(e.currentTarget));
+    $("#replayBtn").addEventListener("click", () => this.replay());
   },
 
   start() {
@@ -1009,6 +1011,14 @@ const Experience = {
     Confetti.cannons();
     Balloons.burst();
     if (btn && !prefersReducedMotion()) this.popHeart(btn);
+  },
+
+  /** Recarga la página desde el inicio (bienvenida) */
+  replay() {
+    try { history.scrollRestoration = "manual"; } catch (_) { /* navegador antiguo */ }
+    document.documentElement.style.scrollBehavior = "auto";
+    window.scrollTo(0, 0);
+    window.location.reload();
   },
 
   /** Un corazoncito sale del botón con cada toque */
@@ -1220,6 +1230,8 @@ const Memories = {
 /* 11. ARRANQUE ============================================================ */
 
 (function boot() {
+  // Siempre empieza arriba, también al recargar con "Ver otra vez"
+  try { history.scrollRestoration = "manual"; } catch (_) { /* navegador antiguo */ }
   Content.apply();
   Sky.init();
   Balloons.init();

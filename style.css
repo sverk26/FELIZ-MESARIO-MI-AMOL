@@ -1147,3 +1147,6 @@ a { color: inherit; }
   20%  { opacity: 1; transform: translate(-50%, -30px) scale(1.25); }
   100% { opacity: 0; transform: translate(calc(-50% + var(--drift, 0px)), -200px) scale(.9); }
 }
+
+/* Botones del cierre, uno debajo del otro */
+.closing__replay { margin-top: -.2rem; }

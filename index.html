@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&family=Great+Vibes&display=swap">
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20261003b">
 
   <!-- Sin JavaScript: se muestra directamente el contenido -->
   <noscript>
@@ -37,7 +37,7 @@
   </noscript>
 
   <!-- Script clásico con defer: funciona en GitHub Pages y al abrir el archivo localmente -->
-  <script src="script.js" defer></script>
+  <script src="script.js?v=20261003b" defer></script>
 </head>
 
 <body class="is-locked">
@@ -190,6 +190,10 @@
       <button class="btn btn--ghost reveal" id="celebrateBtn" type="button" style="--d:.35s">
         <span data-bind="buttons.celebrate">Presionar muchas veces</span>
         <span aria-hidden="true">❤️</span>
+      </button>
+      <button class="btn btn--primary closing__replay reveal" id="replayBtn" type="button" style="--d:.5s">
+        <span data-bind="buttons.replay">Ver otra vez</span>
+        <span aria-hidden="true">🔁</span>
       </button>
     </section>
 
