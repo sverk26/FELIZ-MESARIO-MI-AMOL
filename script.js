@@ -25,7 +25,7 @@
 const CONFIG = {
   "name": "Dulce María",
   "welcomeEyebrow": "Para ti, mi amor",
-  "welcomeLine": "Feliz aniversario,",
+  "welcomeLine": "Feliz Mesario,",
   "welcomeEmoji": "❤️",
   "welcomeSubtitle": "2 años y 9 meses a tu lado, y todavía me sigues sorprendiendo.",
   "welcomeHint": "Sube el volumen: esta sorpresa tiene música.",
