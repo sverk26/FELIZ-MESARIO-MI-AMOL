@@ -1150,3 +1150,20 @@ a { color: inherit; }
 
 /* Botones del cierre, uno debajo del otro */
 .closing__replay { margin-top: -.2rem; }
+
+/* Invitación a deslizar hacia el mensaje final */
+.memories__cue {
+  margin-top: 1.4rem;
+  font-size: clamp(1rem, 3.2vw, 1.15rem);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--orchid);
+  gap: .2rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .9s var(--ease-out), transform .9s var(--ease-out);
+}
+.memories__cue.is-visible { opacity: 1; transform: none; }
+.memories__cue > span:first-child { margin-bottom: .5rem; text-wrap: balance; max-width: 26ch; }
+.memories__cue .scroll-cue__arrow { width: 16px; height: 16px; border-width: 0 2.5px 2.5px 0; }
+.memories__cue-arrow2 { margin-top: -6px; animation-delay: .25s !important; }

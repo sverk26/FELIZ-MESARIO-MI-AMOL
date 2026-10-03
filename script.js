@@ -74,6 +74,7 @@ const CONFIG = {
   "memories": {
     "title": "Nuestros recuerdos",
     "result": "Sabía que elegirías quedarte conmigo",
+    "scrollCue": "Desliza hacia abajo, aún hay algo más para ti 💌",
     "music": "audio/cumbia-del-amor.mp3"
   },
   "centerpiece": {
@@ -1224,6 +1225,12 @@ const Memories = {
     Confetti.burst({ x: r.left + r.width / 2, y: r.top, count: 110, spread: 160, speed: [5, 12] });
     $("#finale").hidden = false;
     setTimeout(() => this.result.scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth", block: "center" }), 200);
+    // Invitación a bajar hacia el mensaje final
+    const cue = $("#toClosing");
+    setTimeout(() => {
+      cue.hidden = false;
+      requestAnimationFrame(() => cue.classList.add("is-visible"));
+    }, prefersReducedMotion() ? 0 : 1600);
   },
 };
 
