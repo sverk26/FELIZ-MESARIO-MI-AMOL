@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Una sorpresa por nuestros 2 años y 9 meses, preparada especialmente para Dulce María.">
+  <meta name="theme-color" content="#fbe4ea">
+
+  <!-- Vista previa al compartir el enlace (WhatsApp, Telegram, etc.) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="❤️ Para Dulce María, por nuestros 2 años y 9 meses">
+  <meta property="og:description" content="Tengo algo que decirte. Ábrelo ✨">
+
+  <title>Feliz aniversario, Dulce María ❤️</title>
+
+  <!-- Favicon en línea: no requiere archivos extra ni genera enlaces rotos -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9D%A4%EF%B8%8F%3C/text%3E%3C/svg%3E">
+
+  <!-- Tipografías (opcionales): si no cargan, la página usa fuentes del sistema -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&family=Great+Vibes&display=swap">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Sin JavaScript: se muestra directamente el contenido -->
+  <noscript>
+    <style>
+      .welcome { display: none !important; }
+      .main[hidden] { display: block !important; }
+      body.is-locked { overflow: auto !important; }
+      .reveal, .message__body p { opacity: 1 !important; transform: none !important; }
+      .centerpiece-controls { display: none !important; }
+      #continuation[hidden], #finale[hidden], #recuerdos[hidden] { display: block !important; }
+      .message__next, .question__buttons, .message__pager { display: none !important; }
+    </style>
+  </noscript>
+
+  <!-- Script clásico con defer: funciona en GitHub Pages y al abrir el archivo localmente -->
+  <script src="script.js" defer></script>
+</head>
+
+<body class="is-locked">
+
+  <!-- ===================== CAPAS DECORATIVAS ===================== -->
+  <div class="sky" id="sky" aria-hidden="true"></div>
+  <div class="balloons is-paused" id="balloons" aria-hidden="true"></div>
+  <canvas class="confetti-canvas" id="confettiCanvas" aria-hidden="true"></canvas>
+  <div class="love-flash" id="loveFlash" hidden aria-hidden="true"><span class="love-flash__heart">❤️</span></div>
+
+  <!-- ===================== ESCENA 1 · BIENVENIDA ===================== -->
+  <section class="welcome" id="welcome" aria-labelledby="welcomeTitle">
+    <div class="welcome__card glass">
+      <p class="welcome__eyebrow" data-bind="welcomeEyebrow">Para ti, mi amor</p>
+
+      <h1 class="welcome__title" id="welcomeTitle">
+        <span class="welcome__line" data-bind="welcomeLine">Feliz aniversario,</span>
+        <span class="welcome__name">
+          <span class="welcome__emoji" aria-hidden="true" data-bind="welcomeEmoji">❤️</span>
+          <span class="foil-name" data-bind="name">Dulce María</span>
+          <span class="welcome__emoji" aria-hidden="true" data-bind="welcomeEmoji">❤️</span>
+        </span>
+      </h1>
+
+      <p class="welcome__subtitle" data-bind="welcomeSubtitle">2 años y 9 meses a tu lado, y todavía me sigues sorprendiendo.</p>
+
+      <button class="btn btn--primary btn--pulse" id="openBtn" type="button">
+        <span aria-hidden="true">✨</span>
+        <span data-bind="buttons.open">Abrir mi sorpresa</span>
+        <span aria-hidden="true">✨</span>
+      </button>
+
+      <p class="welcome__hint" data-bind="welcomeHint">Sube el volumen: esta sorpresa tiene música.</p>
+    </div>
+  </section>
+
+  <!-- ===================== CONTENIDO PRINCIPAL ===================== -->
+  <main class="main" id="main" hidden>
+
+    <!-- Portada -->
+    <section class="scene hero" id="inicio" aria-labelledby="heroTitle">
+      <div class="hero__halo" aria-hidden="true"></div>
+      <p class="hero__kicker reveal" data-bind="heroKicker">Hoy celebro la suerte de tenerte,</p>
+      <h2 class="hero__name reveal" id="heroTitle" tabindex="-1" style="--d:.15s">
+        <span class="foil-name" data-bind="name">Dulce María</span>
+      </h2>
+      <p class="hero__lead reveal" data-bind="heroLead" style="--d:.35s">Preparé este pequeño rincón solo para ti, para recordarte cuánto Te Amo.</p>
+      <a class="scroll-cue reveal" href="#mensaje" style="--d:.6s">
+        <span data-bind="scrollCue">Lee esto despacio</span>
+        <span class="scroll-cue__arrow" aria-hidden="true"></span>
+      </a>
+    </section>
+
+    <!-- Mensaje / dedicatoria -->
+    <section class="scene message" id="mensaje" aria-labelledby="messageTitle">
+      <article class="message__card glass reveal">
+        <div class="message__seal" aria-hidden="true" data-bind="messageSeal">💌</div>
+        <h2 class="message__title" id="messageTitle" data-bind="messageTitle">❤️ Para ti, Dulce María ❤️</h2>
+        <!-- El texto real vive en script.js → CONFIG.message -->
+        <div class="message__body" id="messageBody"><p>Mi Amor, hoy cumplimos 2 años y 9 meses, y todavía me sorprende lo fácil que es quererte y enamorarme mas de ti. 🥰 Contigo, los días comunes se volvieron mis favoritos. ✨ Gracias por tu paciencia, por tus risas y por quedarte también en los días difíciles, no tengo duda de que elegirte fue la mejor decisión que he tomado. 💖</p><p>Hemos pasado por momentos muy bonitos, pero también por días complicados, diferencias, cansancio y situaciones que quizá nos hicieron dudar o sentirnos mal. Y aun así seguimos aquí. 💞 Creo que eso dice mucho de lo que tenemos. No quiero prometerte que todo siempre será perfecto porque sé que no será así, pero sí quiero seguir aprendiendo contigo, seguir mejorando y encontrar la manera de que los dos podamos sentirnos felices y tranquilos en nuestra relación. 🌷 Sé que a veces necesitas más de mí y quizá no siempre sé cómo demostrarte lo que siento, pero quiero seguir aprendiendo a hacerlo. 🤍</p><p>Y gracias también por creer en mí, por alegrarte por mis logros, por apoyarme con mis metas y por estar pendiente de mí incluso cuando estoy cansado o tengo demasiadas cosas en la cabeza. 🙏 Saber que hay alguien que confía en mí y que se alegra genuinamente por lo que voy consiguiendo significa muchísimo. 😊 Yo también quiero verte cumplir tus metas, crecer, lograr todo aquello que quieres y poder estar ahí para acompañarte en el proceso. 🌟 No quiero que dejes de ser tú por estar conmigo; quiero que los dos podamos crecer, cumplir nuestros sueños y seguir encontrándonos en el camino. ❤️</p><p>Ya casi llegamos a los tres años, y quiero seguir sumando meses a tu lado, uno por uno, sin apuro. 💕</p></div>
+        <!-- Paginación de la carta: un párrafo por página -->
+        <div class="message__pager" id="messagePager" hidden>
+          <div class="message__pager-row">
+            <button class="message__prev" id="readPrev" type="button" hidden data-bind="reader.prev">← Anterior</button>
+            <div class="message__dots" id="messageDots" aria-hidden="true"></div>
+          </div>
+          <p class="visually-hidden" id="messagePageStatus" role="status" aria-live="polite"></p>
+          <button class="btn btn--primary" id="readNext" type="button" data-bind="reader.next">Continuar leyendo 💌</button>
+        </div>
+        <p class="message__signoff" data-bind="signoff">Quiero que sepas…</p>
+        <button class="btn btn--primary btn--pulse message__next" id="page2Btn" type="button" data-bind="page2.openButton">Descúbrelo 💌</button>
+      </article>
+    </section>
+
+    <!-- Todo lo que sigue aparece después de leer la segunda página -->
+    <div id="continuation" hidden>
+
+    <!-- Escena interactiva (torta, flor, etc.) -->
+    <section class="scene centerpiece-scene" id="centro" aria-labelledby="centerpieceTitle">
+      <h2 class="scene__title reveal" id="centerpieceTitle" data-bind="centerpiece.title">Una flor que no se marchita</h2>
+      <p class="scene__lead reveal" data-bind="centerpiece.lead" style="--d:.15s">Tócala cuando estés lista.</p>
+
+      <div class="centerpiece-stage reveal" style="--d:.3s">
+<!-- @@CENTERPIECE_HTML_START -->
+        <div class="flower" id="centerpiece" role="img" aria-label="Capullo de flor cerrado">
+          <div class="flower__stem">
+            <span class="flower__leaf flower__leaf--left"></span>
+            <span class="flower__leaf flower__leaf--right"></span>
+          </div>
+          <div class="flower__bloom">
+            <span class="flower__petal" style="--i:0"></span>
+            <span class="flower__petal" style="--i:1"></span>
+            <span class="flower__petal" style="--i:2"></span>
+            <span class="flower__petal" style="--i:3"></span>
+            <span class="flower__petal" style="--i:4"></span>
+            <span class="flower__petal" style="--i:5"></span>
+            <span class="flower__petal" style="--i:6"></span>
+            <span class="flower__petal" style="--i:7"></span>
+            <span class="flower__core"></span>
+          </div>
+          <div class="flower__pot"></div>
+        </div>
+<!-- @@CENTERPIECE_HTML_END -->
+      </div>
+
+      <div class="centerpiece-controls">
+        <button class="btn btn--primary" id="centerpieceBtn" type="button">Pedir un deseo ✨</button>
+        <p class="centerpiece-message" id="centerpieceMessage" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- Pregunta -->
+    <section class="scene question" id="pregunta" aria-labelledby="questionTitle">
+      <h2 class="scene__title question__title reveal" id="questionTitle" data-bind="question.title">¿Deseas continuar con nuestro amor? ❤️</h2>
+      <div class="question__buttons reveal" id="questionButtons" style="--d:.2s">
+        <button class="btn btn--primary question__yes" id="yesBtn" type="button" data-bind="question.yes">💗 Sí</button>
+        <button class="btn btn--ghost question__no" id="noBtn" type="button" data-bind="question.no">No</button>
+      </div>
+      <p class="question__reply" id="noReply" role="status" aria-live="polite"></p>
+    </section>
+
+    <!-- Recuerdos: aparece al responder Sí -->
+    <section class="scene memories" id="recuerdos" hidden aria-labelledby="memoriesTitle">
+      <p class="memories__kicker" id="memoriesTitle" tabindex="-1" data-bind="memories.title">Nuestros recuerdos</p>
+      <div class="memories__frame">
+        <video class="memories__video" id="memoriesVideo" playsinline muted preload="metadata" controls
+               poster="video/portada.jpg" aria-label="Video con fotos de Dulce María y Sverker">
+          <source src="video/nuestros-recuerdos.mp4" type="video/mp4">
+        </video>
+      </div>
+      <p class="memories__result" id="memoriesResult" hidden>
+        <span class="foil-name" data-bind="memories.result">Sabía que elegirías quedarte conmigo</span>
+        <span aria-hidden="true">❤️</span>
+      </p>
+    </section>
+
+    <div id="finale" hidden>
+    <!-- Cierre -->
+    <section class="scene closing" id="cierre" aria-labelledby="closingTitle">
+      <div class="closing__glow" aria-hidden="true"></div>
+      <h2 class="closing__title reveal" id="closingTitle">
+        <span data-bind="closingTitle">Feliz aniversario,</span>
+        <span class="foil-name" data-bind="name">Dulce María</span>
+      </h2>
+      <p class="closing__text reveal" data-bind="closingText" style="--d:.2s">Por muchos meses y años más juntos.</p>
+      <button class="btn btn--ghost reveal" id="celebrateBtn" type="button" style="--d:.35s">
+        <span aria-hidden="true" data-bind="welcomeEmoji">❤️</span>
+        <span data-bind="buttons.celebrate">Celebrar otra vez</span>
+      </button>
+    </section>
+
+    <footer class="signature" data-bind="footer">Con amor, de Sverker para Dulce María ❤️</footer>
+    </div><!-- /finale -->
+    </div><!-- /continuation -->
+  </main>
+
+  <!-- ===================== SEGUNDA PÁGINA ===================== -->
+  <section class="page2" id="page2" hidden role="dialog" aria-modal="true" aria-labelledby="page2Lead">
+    <article class="page2__card glass">
+      <div class="message__seal" aria-hidden="true">💌</div>
+      <h2 class="page2__lead" id="page2Lead" tabindex="-1" data-bind="page2.lead">…que todavía tengo muchos planes contigo.</h2>
+      <div class="page2__body" id="page2Body"></div>
+      <p class="page2__love"><span class="foil-name" data-bind="page2.love">¡Feliz 2 años y 9 meses mi amol. Te amo muchísimo !</span> <span class="page2__love-emoji" aria-hidden="true" data-bind="page2.loveEmoji">❤️</span></p>
+      <p class="page2__signature" data-bind="page2.signature">— Sverker</p>
+      <button class="btn btn--primary" id="page2Continue" type="button" data-bind="page2.continueButton">Continuar 🌷</button>
+    </article>
+  </section>
+
+  <!-- ===================== CONTROL DE MÚSICA ===================== -->
+  <div class="music-control glass" id="musicControl" hidden>
+    <button class="music-control__toggle" id="musicToggle" type="button" aria-pressed="false" aria-label="Música">
+      <span class="music-control__icon" id="musicIcon" aria-hidden="true">🔇</span>
+      <span class="music-control__label" id="musicLabel">Música desactivada</span>
+      <span class="music-control__bars" aria-hidden="true"><i></i><i></i><i></i></span>
+    </button>
+    <label class="music-control__volume">
+      <span class="visually-hidden">Volumen de la música</span>
+      <input type="range" id="volumeSlider" min="0" max="1" step="0.05" value="0.6">
+    </label>
+  </div>
+
+  <!-- La ruta del MP3 se define en script.js → CONFIG.music.src -->
+  <audio id="bgMusic" preload="auto" loop></audio>
+
+</body>
+</html>
