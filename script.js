@@ -935,14 +935,10 @@ const Centerpiece = {
   },
 
   toQuestion() {
-    const stage = $("#questionStage");
-    stage.hidden = false;
     this.nextBtn.hidden = true;
-    requestAnimationFrame(() => {
-      $("#pregunta").scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth", block: "start" });
-      $("#questionTitle").setAttribute("tabindex", "-1");
-      $("#questionTitle").focus({ preventScroll: true });
-    });
+    Stage.go({ hide: ["#centro"], show: ["#questionStage"] });
+    $("#questionTitle").setAttribute("tabindex", "-1");
+    $("#questionTitle").focus({ preventScroll: true });
   },
 
 };
@@ -1012,6 +1008,21 @@ const Experience = {
     Confetti.rain(3200);
     Confetti.cannons();
     Balloons.burst();
+  },
+};
+
+/* 10·. FASES: cada paso es una pantalla nueva ============================= */
+
+const Stage = {
+  /** Oculta los selectores de `hide`, muestra los de `show` y sube al inicio sin animación */
+  go({ hide = [], show = [] }) {
+    hide.forEach((sel) => { const el = $(sel); if (el) el.hidden = true; });
+    show.forEach((sel) => { const el = $(sel); if (el) el.hidden = false; });
+    const root = document.documentElement;
+    const prev = root.style.scrollBehavior;
+    root.style.scrollBehavior = "auto";
+    window.scrollTo(0, 0);
+    root.style.scrollBehavior = prev;
   },
 };
 
@@ -1093,16 +1104,14 @@ const Page2 = {
   },
 
   close() {
+    // La flor queda lista detrás de la hoja; la portada y la carta ya no se muestran
+    Stage.go({ hide: ["#inicio", "#mensaje"], show: ["#continuation"] });
     this.el.classList.remove("is-open");
     this.el.classList.add("is-leaving");
-    const continuation = $("#continuation");
-    const wasHidden = continuation.hidden;
-    continuation.hidden = false;
     setTimeout(() => {
       this.el.hidden = true;
       this.el.classList.remove("is-leaving");
       document.body.classList.remove("is-locked");
-      if (wasHidden) $("#centro").scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth" });
       $("#centerpieceTitle").setAttribute("tabindex", "-1");
       $("#centerpieceTitle").focus({ preventScroll: true });
     }, prefersReducedMotion() ? 0 : 650);
@@ -1167,8 +1176,7 @@ const Memories = {
     Balloons.burst();
 
     setTimeout(() => {
-      this.section.hidden = false;
-      this.section.scrollIntoView({ behavior: "auto", block: "start" });
+      Stage.go({ hide: ["#questionStage"], show: ["#recuerdos"] });
       $("#memoriesTitle").focus({ preventScroll: true });
       this.flash.classList.remove("is-on");
       const playing = this.video.play();
